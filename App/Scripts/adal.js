@@ -214,6 +214,8 @@ AuthenticationContext.prototype.getCachedToken = function (resource) {
 * @returns {User} user object
 */
 AuthenticationContext.prototype.getCachedUser = function () {
+	console.log('--------------------------------------------------------------');
+	console.log('Function getCachedUser');
     if (this._user) {
         return this._user;
     }
@@ -463,7 +465,9 @@ AuthenticationContext.prototype.getUser = function (callback) {
     // frame is used to get idtoken
     var idtoken = this._getItem(this.CONSTANTS.STORAGE.IDTOKEN);
     if (!this._isEmpty(idtoken)) {
-        this._logstatus('User exists in cache: ');
+        console.log('----------------------------------------------------------');
+		console.log('Function getUser');
+		this._logstatus('User exists in cache: ');
         this._user = this._createUser(idtoken);
         this.callback(null, this._user);
     } else {
@@ -482,6 +486,8 @@ AuthenticationContext.prototype._getDomainHint = function () {
 };
 
 AuthenticationContext.prototype._createUser = function (idToken) {
+	console.log('--------------------------------------------------------');
+	console.log('Function _createUser');
     var user = null;
     var parsedJson = this._extractIdToken(idToken);
     if (parsedJson && parsedJson.hasOwnProperty('aud')) {
@@ -667,6 +673,8 @@ AuthenticationContext.prototype.saveTokenFromHash = function (requestInfo) {
 
             if (requestInfo.parameters.hasOwnProperty(this.CONSTANTS.ID_TOKEN)) {
                 this._loginInProgress = false;
+				console.log('-----------------------------------------------------------');
+				console.log('Function saveTokenFromHash');
                 this._user = this._createUser(requestInfo.parameters[this.CONSTANTS.ID_TOKEN]);
                 if (this._user && this._user.profile) {
                     if (this._user.profile.nonce !== this._getItem(this.CONSTANTS.STORAGE.NONCE_IDTOKEN)) {
@@ -744,7 +752,9 @@ AuthenticationContext.prototype.handleWindowCallback = function () {
             return;
         } else if (requestInfo.requestType === this.REQUEST_TYPE.ID_TOKEN) {
             // JS context may not have the user if callback page was different, so parse idtoken again to callback
-            callback(this._getItem(this.CONSTANTS.STORAGE.ERROR_DESCRIPTION), this._createUser(this._getItem(this.CONSTANTS.STORAGE.IDTOKEN)));
+            console.log('-------------------------------------------------------------');
+			console.log('Function handleWindowCallback');
+			callback(this._getItem(this.CONSTANTS.STORAGE.ERROR_DESCRIPTION), this._createUser(this._getItem(this.CONSTANTS.STORAGE.IDTOKEN)));
             return;
         }
     }
@@ -767,7 +777,7 @@ AuthenticationContext.prototype._getNavigateUrl = function (responseType, resour
 
 AuthenticationContext.prototype._extractIdToken = function (encodedIdToken) {
 	console.log('------------------------------------------------------');
-	console.log('Function111');
+	console.log('Function _extractIdToken');
 	console.log('encodedIdTokan = '+encodedIdToken + '\n');
     // id token will be decoded to get the username
     var decodedToken = this._decodeJwt(encodedIdToken);
@@ -778,9 +788,9 @@ AuthenticationContext.prototype._extractIdToken = function (encodedIdToken) {
 
     try {
         var base64IdToken = decodedToken.JWSPayload;
-		console.log('base64IdToken = '+base64IdToken+'\n');
+		//console.log('base64IdToken = '+base64IdToken+'\n');
         var base64Decoded = this._base64DecodeStringUrlSafe(base64IdToken);
-		console.log('base64Decoded = '+base64Decoded+'\n');
+		//console.log('base64Decoded = '+base64Decoded+'\n');
         if (!base64Decoded) {
             this._logstatus('The returned id_token could not be base64 url safe decoded.');
             return null;
@@ -1010,7 +1020,7 @@ AuthenticationContext.prototype._saveItem = function (key, obj) {
 AuthenticationContext.prototype._getItem = function (key) {
 
     if (this.config && this.config.cacheLocation && this.config.cacheLocation === 'localStorage') {
-
+		
         if (!this._supportsLocalStorage()) {
             this._logstatus('Local storage is not supported');
             return null;
