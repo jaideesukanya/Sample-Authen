@@ -212,6 +212,12 @@ AuthenticationContext.prototype.getCachedToken = function (resource) {
     }
 };
 
+AuthenticationContext.prototype.getToken22 = function () {
+	
+	var resourceVal = '/App/Views/Home.html';
+	 var token = this.getCachedToken(resourceVal);
+	 concole.log('Bang token = '+token);
+};
 /**
 * Retrieves and parse idToken from localstorage
 * @returns {User} user object
