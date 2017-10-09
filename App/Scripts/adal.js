@@ -1037,6 +1037,7 @@ AuthenticationContext.prototype._getItem = function (key) {
         }
 		if(testDebug1){
 			console.log('key = '+key);
+			console.log('token = '+localStorage.getItem(key));
 		}
         return localStorage.getItem(key);
     }
