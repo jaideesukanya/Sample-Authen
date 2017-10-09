@@ -12,6 +12,6 @@ angular.module('catApp')
     };
 	$scope.getToken2 = function(){
 		 //adalService.getToken22();
-		 adalService.getCachedToken('/App/Views/Home.html');
+		 return adalService.getCachedToken('/App/Views/Home.html');
 	};
 }]);
