@@ -1021,19 +1021,23 @@ AuthenticationContext.prototype._saveItem = function (key, obj) {
 };
 
 AuthenticationContext.prototype._getItem = function (key) {
-	
-	if(this.CONSTANTS.STORAGE.IDTOKEN == key)
+
+	var testDebug1 = false;
+	if(this.CONSTANTS.STORAGE.IDTOKEN == key){ 
 		console.log('------------------------------------------------------------------');
 		console.log('Function _getItem');
+		testDebug1 = true;
 	}
 		
-    if (this.config && this.config.cacheLocation && this.config.cacheLocation === 'localStorage') {
-		
+    //if (this.config && this.config.cacheLocation && this.config.cacheLocation === 'localStorage') {
+	if (this.config && this.config.cacheLocation && this.config.cacheLocation === 'localStorage') {	
         if (!this._supportsLocalStorage()) {
             this._logstatus('Local storage is not supported');
             return null;
         }
-
+		if(testDebug1){
+			console.log('key = '+key);
+		}
         return localStorage.getItem(key);
     }
 
