@@ -195,10 +195,10 @@ if (typeof module !== 'undefined' && module.exports) {
                 $rootScope.$on('$locationChangeStart', locationChangeHandler);
 
                 updateDataFromCache(_adal.config.loginResource);
-				console.log('==============================================');
+				/*console.log('==============================================');
 				console.log('Call userInfor1');
 				console.log('_oauthData = '+_oauthData);
-                $rootScope.userInfo = _oauthData;
+                $rootScope.userInfo = _oauthData;*/
 
                 return {
                     // public methods will be here that are accessible from Controller
