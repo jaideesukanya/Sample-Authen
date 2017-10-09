@@ -18,5 +18,5 @@ angular.module('catApp')
 		 var tokenVal = adalService.getCachedToken(resource);
 		 console.log('Call homeCtrl getCachedToken = '+tokenVal);
 		 return tokenVal;
-	}';
+	};
 }]);
