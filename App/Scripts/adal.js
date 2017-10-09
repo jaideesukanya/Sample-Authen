@@ -475,8 +475,8 @@ AuthenticationContext.prototype.getUser = function (callback) {
     // frame is used to get idtoken
     var idtoken = this._getItem(this.CONSTANTS.STORAGE.IDTOKEN);
     if (!this._isEmpty(idtoken)) {
-        console.log('----------------------------------------------------------');
-		console.log('Function getUser');
+        //console.log('----------------------------------------------------------');
+		//console.log('Function getUser');
 		this._logstatus('User exists in cache: ');
         this._user = this._createUser(idtoken);
         this.callback(null, this._user);
@@ -496,8 +496,8 @@ AuthenticationContext.prototype._getDomainHint = function () {
 };
 
 AuthenticationContext.prototype._createUser = function (idToken) {
-	console.log('--------------------------------------------------------');
-	console.log('Function _createUser');
+	//console.log('--------------------------------------------------------');
+	//console.log('Function _createUser');
     var user = null;
     var parsedJson = this._extractIdToken(idToken);
     if (parsedJson && parsedJson.hasOwnProperty('aud')) {
@@ -683,8 +683,8 @@ AuthenticationContext.prototype.saveTokenFromHash = function (requestInfo) {
 
             if (requestInfo.parameters.hasOwnProperty(this.CONSTANTS.ID_TOKEN)) {
                 this._loginInProgress = false;
-				console.log('-----------------------------------------------------------');
-				console.log('Function saveTokenFromHash');
+				//console.log('-----------------------------------------------------------');
+				//console.log('Function saveTokenFromHash');
                 this._user = this._createUser(requestInfo.parameters[this.CONSTANTS.ID_TOKEN]);
                 if (this._user && this._user.profile) {
                     if (this._user.profile.nonce !== this._getItem(this.CONSTANTS.STORAGE.NONCE_IDTOKEN)) {
@@ -762,8 +762,8 @@ AuthenticationContext.prototype.handleWindowCallback = function () {
             return;
         } else if (requestInfo.requestType === this.REQUEST_TYPE.ID_TOKEN) {
             // JS context may not have the user if callback page was different, so parse idtoken again to callback
-            console.log('-------------------------------------------------------------');
-			console.log('Function handleWindowCallback');
+            //console.log('-------------------------------------------------------------');
+			//console.log('Function handleWindowCallback');
 			callback(this._getItem(this.CONSTANTS.STORAGE.ERROR_DESCRIPTION), this._createUser(this._getItem(this.CONSTANTS.STORAGE.IDTOKEN)));
             return;
         }
