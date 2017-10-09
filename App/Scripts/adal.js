@@ -792,15 +792,31 @@ AuthenticationContext.prototype._extractIdToken = function (encodedIdToken) {
     // id token will be decoded to get the username
     var decodedToken = this._decodeJwt(encodedIdToken);
 	console.log('decodedToken1 = '+decodedToken + '\n');
-    if (!decodedToken) {
+	
+	//------------------- Debug Zone -----------------------
+	var decodedToken1 = this._decodeJwt('eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IkhIQnlLVS0wRHFBcU1aaDZaRlBkMlZXYU90ZyIsImtpZCI6IkhIQnlLVS0wRHFBcU1aaDZaRlBkMlZXYU90ZyJ9.eyJhdWQiOiI1ODI5ZGFlNy04Zjg0LTQ3MGEtYjExYy02Y2YzMjU0NWYwNzQiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8zZTBiNmNiZC00OTU5LTRkMDEtODFiZi1jZTg4M2RkYWJkOTYvIiwiaWF0IjoxNTA3NTUzMDY5LCJuYmYiOjE1MDc1NTMwNjksImV4cCI6MTUwNzU1Njk2OSwiYWlvIjoiWTJWZ1lEanUvdnlEaUl4OFZ1WHAxdXE5UDBTbFhUYnpNT1FmMi9rMCtwVGZybDZlLzRjQiIsImFtciI6WyJwd2QiXSwiZmFtaWx5X25hbWUiOiJUb25nc2F3YW5nIiwiZ2l2ZW5fbmFtZSI6IktpdHRpcG9uZyIsImlwYWRkciI6IjExNC4xMDkuMTUuMjM3IiwibmFtZSI6IlRvbmdzYXdhbmcgS2l0dGlwb25nIC0gVG9nZXRoZXIgVEgiLCJub25jZSI6ImRlZiIsIm9pZCI6IjZmMjEyZTg3LTBkZmEtNDJkZC1hODJiLWMzODdlM2U0NGU5NiIsInN1YiI6Ik54aGpLNmUtcDNSaW5ZYU1WcWx5cTFXY0RQNzFzM2JqLUxrR0hZb2JjMGMiLCJ0aWQiOiIzZTBiNmNiZC00OTU5LTRkMDEtODFiZi1jZTg4M2RkYWJkOTYiLCJ1bmlxdWVfbmFtZSI6ImsudG9uZ3Nhd2FuZ0B0b2dldGhlcnRlYW0uY28udGgiLCJ1cG4iOiJrLnRvbmdzYXdhbmdAdG9nZXRoZXJ0ZWFtLmNvLnRoIiwidmVyIjoiMS4wIn0.pu1ObWYU_Tz1BMsy1aL2gyczEgR0CyqkK5gNXt17lhYbtzApVGluAD1JHOAHr2BnLA3BpeWHyyyLvJTocav_XibUuub7dDF5hk5-qS5PQli1lndzGKQ2bjqOsyWzqaP7rg70IMiBVcCXzBMhkUxau75FCCm6rnltK82R0i10cZcTBJ4H0XyokcK_HmIGX87MGw2jmqy7wlXYCGWqGghCETi6qpcau5KgTClQajJ1mzRS9l42w_MeHXOYEgPOLPFSr58rB0-ehdsXpcfD3XoChWCYcBYXsxvA9oUMEil11oqTJbU_IS3Nd0U-l-DVIoPnVhwhjToflO_jMjiy__Mxrw');
+    console.log('Success DecodeToken1 = '+decodedToken1);
+	//------------------------------------------------------
+	if (!decodedToken) {
         return null;
     }
 
     try {
         var base64IdToken = decodedToken.JWSPayload;
 		console.log('decodedToken2 = '+base64IdToken+'\n');
+		//---------------------- Debug Zone -------------------------
+		var decodedToken2 = decodedToken1.JWSPayload;
+		console.log('Success DecodeToken2 = '+decodedToken2);
+		//-----------------------------------------------------------
+		
+		
+		
         var base64Decoded = this._base64DecodeStringUrlSafe(base64IdToken);
 		console.log('decodedToken3 = '+base64Decoded+'\n');
+		//---------------------- Debug Zone -------------------------
+		var decodedToken3 = this._base64DecodeStringUrlSafe(decodedToken2);
+		console.log('Success DecodeToken3 = '+decodedToken3);
+		//-----------------------------------------------------------
         if (!base64Decoded) {
             this._logstatus('The returned id_token could not be base64 url safe decoded.');
             return null;
