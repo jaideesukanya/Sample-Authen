@@ -223,9 +223,9 @@ AuthenticationContext.prototype.getToken22 = function () {
 * @returns {User} user object
 */
 AuthenticationContext.prototype.getCachedUser = function () {
-	console.log('--------------------------------------------------------------');
-	console.log('Function getCachedUser');
-	console.log('ID token = '+this.CONSTANTS.STORAGE.IDTOKEN);
+	//console.log('--------------------------------------------------------------');
+	//console.log('Function getCachedUser');
+	//console.log('ID token = '+this.CONSTANTS.STORAGE.IDTOKEN);
     if (this._user) {
         return this._user;
     }
