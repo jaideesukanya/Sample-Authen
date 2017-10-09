@@ -794,7 +794,7 @@ AuthenticationContext.prototype._extractIdToken = function (encodedIdToken) {
 	console.log('decodedToken1 = '+decodedToken + '\n');
 	
 	//------------------- Debug Zone -----------------------
-	var decodedToken1 = this._decodeJwt('eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IkhIQnlLVS0wRHFBcU1aaDZaRlBkMlZXYU90ZyIsImtpZCI6IkhIQnlLVS0wRHFBcU1aaDZaRlBkMlZXYU90ZyJ9.eyJhdWQiOiI1ODI5ZGFlNy04Zjg0LTQ3MGEtYjExYy02Y2YzMjU0NWYwNzQiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8zZTBiNmNiZC00OTU5LTRkMDEtODFiZi1jZTg4M2RkYWJkOTYvIiwiaWF0IjoxNTA3NTUzMDY5LCJuYmYiOjE1MDc1NTMwNjksImV4cCI6MTUwNzU1Njk2OSwiYWlvIjoiWTJWZ1lEanUvdnlEaUl4OFZ1WHAxdXE5UDBTbFhUYnpNT1FmMi9rMCtwVGZybDZlLzRjQiIsImFtciI6WyJwd2QiXSwiZmFtaWx5X25hbWUiOiJUb25nc2F3YW5nIiwiZ2l2ZW5fbmFtZSI6IktpdHRpcG9uZyIsImlwYWRkciI6IjExNC4xMDkuMTUuMjM3IiwibmFtZSI6IlRvbmdzYXdhbmcgS2l0dGlwb25nIC0gVG9nZXRoZXIgVEgiLCJub25jZSI6ImRlZiIsIm9pZCI6IjZmMjEyZTg3LTBkZmEtNDJkZC1hODJiLWMzODdlM2U0NGU5NiIsInN1YiI6Ik54aGpLNmUtcDNSaW5ZYU1WcWx5cTFXY0RQNzFzM2JqLUxrR0hZb2JjMGMiLCJ0aWQiOiIzZTBiNmNiZC00OTU5LTRkMDEtODFiZi1jZTg4M2RkYWJkOTYiLCJ1bmlxdWVfbmFtZSI6ImsudG9uZ3Nhd2FuZ0B0b2dldGhlcnRlYW0uY28udGgiLCJ1cG4iOiJrLnRvbmdzYXdhbmdAdG9nZXRoZXJ0ZWFtLmNvLnRoIiwidmVyIjoiMS4wIn0.pu1ObWYU_Tz1BMsy1aL2gyczEgR0CyqkK5gNXt17lhYbtzApVGluAD1JHOAHr2BnLA3BpeWHyyyLvJTocav_XibUuub7dDF5hk5-qS5PQli1lndzGKQ2bjqOsyWzqaP7rg70IMiBVcCXzBMhkUxau75FCCm6rnltK82R0i10cZcTBJ4H0XyokcK_HmIGX87MGw2jmqy7wlXYCGWqGghCETi6qpcau5KgTClQajJ1mzRS9l42w_MeHXOYEgPOLPFSr58rB0-ehdsXpcfD3XoChWCYcBYXsxvA9oUMEil11oqTJbU_IS3Nd0U-l-DVIoPnVhwhjToflO_jMjiy__Mxrw');
+	var decodedToken1 = this._decodeJwt('eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IkhIQnlLVS0wRHFBcU1aaDZaRlBkMlZXYU90ZyIsImtpZCI6IkhIQnlLVS0wRHFBcU1aaDZaRlBkMlZXYU90ZyJ9.eyJhdWQiOiI1ODI5ZGFlNy04Zjg0LTQ3MGEtYjExYy02Y2YzMjU0NWYwNzQiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8zZTBiNmNiZC00OTU5LTRkMDEtODFiZi1jZTg4M2RkYWJkOTYvIiwiaWF0IjoxNTA3NTU2MjE2LCJuYmYiOjE1MDc1NTYyMTYsImV4cCI6MTUwNzU2MDExNiwiYWlvIjoiWTJWZ1lKQjYvbjZSMXZSWmUyWGxYQjlaTngzaVNiajdORENDM2U4Smc5QTdtYk9DMGk4QiIsImFtciI6WyJwd2QiXSwiZmFtaWx5X25hbWUiOiJUb25nc2F3YW5nIiwiZ2l2ZW5fbmFtZSI6IktpdHRpcG9uZyIsImlwYWRkciI6IjExNC4xMDkuMTUuMjM3IiwibmFtZSI6IlRvbmdzYXdhbmcgS2l0dGlwb25nIC0gVG9nZXRoZXIgVEgiLCJub25jZSI6ImRlZiIsIm9pZCI6IjZmMjEyZTg3LTBkZmEtNDJkZC1hODJiLWMzODdlM2U0NGU5NiIsInN1YiI6Ik54aGpLNmUtcDNSaW5ZYU1WcWx5cTFXY0RQNzFzM2JqLUxrR0hZb2JjMGMiLCJ0aWQiOiIzZTBiNmNiZC00OTU5LTRkMDEtODFiZi1jZTg4M2RkYWJkOTYiLCJ1bmlxdWVfbmFtZSI6ImsudG9uZ3Nhd2FuZ0B0b2dldGhlcnRlYW0uY28udGgiLCJ1cG4iOiJrLnRvbmdzYXdhbmdAdG9nZXRoZXJ0ZWFtLmNvLnRoIiwidmVyIjoiMS4wIn0.CWeqI4VHGKazIhS2AslTNuUdtOsHKdSTygNkS1pS2NTft_z8O-gfxkSakcswsF76D3nt1_2U2JkwKeRVV-5EQoVGXaQTrTr8eSRrFe8FYC8NQyoNjBX0hTAKj--uaOUe84RKE8guqCFQ9ZJeGssxZXsILTt_jKvc1fwCA2UvyLCLQHFwY0ORYSe_hwaz1dUE8GPat3NoOEIcuX820oqINZVAzqUEoCuCV7jehvZ3Wmt7aB1ppc1gTWVxGlDNPGPfiGYvonoj1C6ZdKzUms5_2B796y_mQIJv-g7YwS-X1ps15cpRG8j6CMrUD-Z3Z2YGVTcjMoil5mN3EKwakH4MdQ');
     console.log('Success DecodeToken1 = '+decodedToken1);
 	//------------------------------------------------------
 	if (!decodedToken) {
@@ -803,10 +803,10 @@ AuthenticationContext.prototype._extractIdToken = function (encodedIdToken) {
 
     try {
         var base64IdToken = decodedToken.JWSPayload;
-		console.log('decodedToken2 = '+base64IdToken+'\n');
+		//console.log('decodedToken2 = '+base64IdToken+'\n');
 		//---------------------- Debug Zone -------------------------
 		var decodedToken2 = decodedToken1.JWSPayload;
-		console.log('Success DecodeToken2 = '+decodedToken2);
+		//console.log('Success DecodeToken2 = '+decodedToken2);
 		//-----------------------------------------------------------
 		
 		
