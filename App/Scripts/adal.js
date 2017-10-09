@@ -190,6 +190,8 @@ AuthenticationContext.prototype._hasResource = function (key) {
 * @returns {string} token if exists and not expired or null
 */
 AuthenticationContext.prototype.getCachedToken = function (resource) {
+	console.log('-------------------------------------------------------------');
+	console.log('Function getCachedToken');
     if (!this._hasResource(resource)) {
         return null;
     }
@@ -216,6 +218,7 @@ AuthenticationContext.prototype.getCachedToken = function (resource) {
 AuthenticationContext.prototype.getCachedUser = function () {
 	console.log('--------------------------------------------------------------');
 	console.log('Function getCachedUser');
+	console.log('ID token = '+this.CONSTANTS.STORAGE.IDTOKEN);
     if (this._user) {
         return this._user;
     }
@@ -1018,9 +1021,17 @@ AuthenticationContext.prototype._saveItem = function (key, obj) {
 };
 
 AuthenticationContext.prototype._getItem = function (key) {
-
-    if (this.config && this.config.cacheLocation && this.config.cacheLocation === 'localStorage') {
+	
+	var debug = false;
+	if(this.CONSTANTS.STORAGE.IDTOKEN == key)
+		console.log('------------------------------------------------------------------');
+		console.log('Function _getItem');
+		debug = true;
+	}
 		
+    //if (this.config && this.config.cacheLocation && this.config.cacheLocation === 'localStorage') {
+	if (this.config && this.config.cacheLocation && this.config.cacheLocation === 'localStorage' && debug) {
+		console.log('Banggg !!!');
         if (!this._supportsLocalStorage()) {
             this._logstatus('Local storage is not supported');
             return null;
