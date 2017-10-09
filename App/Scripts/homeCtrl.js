@@ -10,4 +10,7 @@ angular.module('catApp')
     $scope.isActive = function (viewLocation) {        
         return viewLocation === $location.path();
     };
+	$scope.getToken2 = function(){
+		 adalService.getToken22();
+	};
 }]);

@@ -192,6 +192,7 @@ AuthenticationContext.prototype._hasResource = function (key) {
 AuthenticationContext.prototype.getCachedToken = function (resource) {
 	console.log('-------------------------------------------------------------');
 	console.log('Function getCachedToken');
+	console.log('resource = '+resource);
     if (!this._hasResource(resource)) {
         return null;
     }
