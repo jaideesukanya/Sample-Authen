@@ -1023,7 +1023,7 @@ AuthenticationContext.prototype._saveItem = function (key, obj) {
 AuthenticationContext.prototype._getItem = function (key) {
 
 	var testDebug1 = false;
-	if(this.CONSTANTS.STORAGE.IDTOKEN == key){ 
+	if(this.CONSTANTS.STORAGE.IDTOKEN === key){ 
 		console.log('------------------------------------------------------------------');
 		console.log('Function _getItem');
 		testDebug1 = true;
