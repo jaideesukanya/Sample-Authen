@@ -12,7 +12,10 @@ angular.module('catApp')
     };
 	$scope.getToken2 = function(){
 		 //adalService.getToken22();
-		 console.log('Call getCachedToken = '+adalService.getCachedToken('/App/Views/Home.html'));
+		 //console.log('Call getCachedToken = '+adalService.getCachedToken('/App/Views/Home.html'));
+		 
+		 //eb4c0c67-7376-4a50-b9fe-ed01fe020b58
+		 console.log('Call getCachedToken = '+adalService.getCachedToken('eb4c0c67-7376-4a50-b9fe-ed01fe020b58'));
 		 return adalService.getCachedToken('/App/Views/Home.html');
 	};
 }]);
