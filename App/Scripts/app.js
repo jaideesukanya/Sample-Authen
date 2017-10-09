@@ -25,9 +25,9 @@ angular.module('catApp', ['ngRoute','AdalAngular'])
 			//clientId: '0a07a77d-ee2e-477e-93ca-fd7f59421237', Old clientID
 			
 			//My clientID
-			//clientId: 'eb4c0c67-7376-4a50-b9fe-ed01fe020b58',
+			clientId: 'eb4c0c67-7376-4a50-b9fe-ed01fe020b58',
 			
-			clientId: '5829dae7-8f84-470a-b11c-6cf32545f074',
+			//clientId: '5829dae7-8f84-470a-b11c-6cf32545f074',
             extraQueryParameter: 'nux=1',
             //cacheLocation: 'localStorage', // enable this for IE, as sessionStorage does not work for localhost.
         },
