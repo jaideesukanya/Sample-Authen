@@ -1029,8 +1029,8 @@ AuthenticationContext.prototype._getItem = function (key) {
 		debug1 = true;
 	}
 		
-    //if (this.config && this.config.cacheLocation && this.config.cacheLocation === 'localStorage') {
-	if (this.config && this.config.cacheLocation && this.config.cacheLocation === 'localStorage' && debug1 != false) {
+    if (this.config && this.config.cacheLocation && this.config.cacheLocation === 'localStorage') {
+	// (this.config && this.config.cacheLocation && this.config.cacheLocation === 'localStorage' && debug1 != false) {
 		console.log('Banggg !!!');
         if (!this._supportsLocalStorage()) {
             this._logstatus('Local storage is not supported');
