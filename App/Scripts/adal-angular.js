@@ -268,7 +268,8 @@ if (typeof module !== 'undefined' && module.exports) {
                         // Loading with injector is suggested at github. https://github.com/angular/angular.js/issues/2367
 
                         config.headers = config.headers || {};
-
+						console.log('config = '+config);
+						console.log('config url = '+config.url);
                         var resource = authService.getResourceForEndpoint(config.url);
                         var tokenStored = authService.getCachedToken(resource);
                         var isEndpoint = false;
