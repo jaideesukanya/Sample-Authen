@@ -17,6 +17,10 @@
 		} */
 		
 		//console.log('test print = '+{{userInfo.fullToken}});
+		//var testEle = angular.element(document.querySelector('[ng-controller="calcCtrl"]')).scope().streetName;
+		var _adal = null;
+		var token = _adal.getCachedToken(resource);
+		console.log('Final token = '+token);
 	</script>
 </div>
 <div> 
