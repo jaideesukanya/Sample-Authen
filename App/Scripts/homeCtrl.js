@@ -11,6 +11,7 @@ angular.module('catApp')
         return viewLocation === $location.path();
     };
 	$scope.getToken2 = function(){
-		 adalService.getToken22();
+		 //adalService.getToken22();
+		 adalService.getCachedToken('/App/Views/Home.html');
 	};
 }]);
