@@ -1022,15 +1022,15 @@ AuthenticationContext.prototype._saveItem = function (key, obj) {
 
 AuthenticationContext.prototype._getItem = function (key) {
 	
-	var debug = false;
+	var debug1 = false;
 	if(this.CONSTANTS.STORAGE.IDTOKEN == key)
 		console.log('------------------------------------------------------------------');
 		console.log('Function _getItem');
-		debug = true;
+		debug1 = true;
 	}
 		
     //if (this.config && this.config.cacheLocation && this.config.cacheLocation === 'localStorage') {
-	if (this.config && this.config.cacheLocation && this.config.cacheLocation === 'localStorage' && debug) {
+	if (this.config && this.config.cacheLocation && this.config.cacheLocation === 'localStorage' && debug1 != false) {
 		console.log('Banggg !!!');
         if (!this._supportsLocalStorage()) {
             this._logstatus('Local storage is not supported');
