@@ -210,9 +210,6 @@ if (typeof module !== 'undefined' && module.exports) {
                         //call signout related method
                     },
                     getCachedToken: function (resource) {
-						console.log('**********************************');
-						console.log('getCachedToken');
-						console.log('resource = '+resource);
                         return _adal.getCachedToken(resource);
                     },
                     userInfo: _oauthData,
