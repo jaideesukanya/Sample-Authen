@@ -10,7 +10,7 @@ angular.module('catApp')
 		 return adalService.getCachedToken('/App/Views/Home.html');
 	};*/
 	
-	$scope.getToken2 = function(){
+	$scope.getToken3 = function(){
 		console.log('Call getToken from calcCtrl.js');
 		 var resource = 'eb4c0c67-7376-4a50-b9fe-ed01fe020b58';
 		 var tokenVal = adalService.getCachedToken(resource);
