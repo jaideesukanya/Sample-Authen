@@ -213,6 +213,10 @@ if (typeof module !== 'undefined' && module.exports) {
                         return _adal.getCachedToken(resource);
                     },
                     userInfo: _oauthData,
+					//add function
+					getClientID: function(){
+						return _adal.config.loginResource;
+					},
                     acquireToken: function (resource) {
                         // automated token request call
                         var deferred = $q.defer();
