@@ -10,8 +10,9 @@ angular.module('catApp', ['ngRoute','AdalAngular'])
         templateUrl: "/App/Views/CatList.html",
         requireADLogin: true,
 	}).when("/Calc", {
-        controller: "userDataCtrl",
+        controller: "calcCtrl",
         templateUrl: "/App/Views/Calc.html",
+		requireADLogin: true,
     }).when("/UserData", {
         controller: "userDataCtrl",
         templateUrl: "/App/Views/UserData.html",
