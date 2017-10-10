@@ -195,10 +195,6 @@ if (typeof module !== 'undefined' && module.exports) {
                 $rootScope.$on('$locationChangeStart', locationChangeHandler);
 
                 updateDataFromCache(_adal.config.loginResource);
-				/*console.log('==============================================');
-				console.log('Call userInfor1');
-				console.log('_oauthData = '+_oauthData);
-                $rootScope.userInfo = _oauthData;*/
 
                 return {
                     // public methods will be here that are accessible from Controller
@@ -217,7 +213,6 @@ if (typeof module !== 'undefined' && module.exports) {
 						console.log('**********************************');
 						console.log('getCachedToken');
 						console.log('resource = '+resource);
-						console.log('return = '+_adal.getCachedToken(resource));
                         return _adal.getCachedToken(resource);
                     },
                     userInfo: _oauthData,
@@ -272,8 +267,6 @@ if (typeof module !== 'undefined' && module.exports) {
                         // Loading with injector is suggested at github. https://github.com/angular/angular.js/issues/2367
 
                         config.headers = config.headers || {};
-						console.log('config = '+config);
-						console.log('config url = '+config.url);
                         var resource = authService.getResourceForEndpoint(config.url);
                         var tokenStored = authService.getCachedToken(resource);
                         var isEndpoint = false;

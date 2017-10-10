@@ -190,9 +190,6 @@ AuthenticationContext.prototype._hasResource = function (key) {
 * @returns {string} token if exists and not expired or null
 */
 AuthenticationContext.prototype.getCachedToken = function (resource) {
-	//console.log('-------------------------------------------------------------');
-	//console.log('Function getCachedToken');
-	//console.log('resource = '+resource);
     if (!this._hasResource(resource)) {
         return null;
     }
@@ -223,9 +220,6 @@ AuthenticationContext.prototype.getToken22 = function () {
 * @returns {User} user object
 */
 AuthenticationContext.prototype.getCachedUser = function () {
-	//console.log('--------------------------------------------------------------');
-	//console.log('Function getCachedUser');
-	//console.log('ID token = '+this.CONSTANTS.STORAGE.IDTOKEN);
     if (this._user) {
         return this._user;
     }
@@ -475,8 +469,6 @@ AuthenticationContext.prototype.getUser = function (callback) {
     // frame is used to get idtoken
     var idtoken = this._getItem(this.CONSTANTS.STORAGE.IDTOKEN);
     if (!this._isEmpty(idtoken)) {
-        //console.log('----------------------------------------------------------');
-		//console.log('Function getUser');
 		this._logstatus('User exists in cache: ');
         this._user = this._createUser(idtoken);
         this.callback(null, this._user);
@@ -496,8 +488,6 @@ AuthenticationContext.prototype._getDomainHint = function () {
 };
 
 AuthenticationContext.prototype._createUser = function (idToken) {
-	//console.log('--------------------------------------------------------');
-	//console.log('Function _createUser');
     var user = null;
     var parsedJson = this._extractIdToken(idToken);
     if (parsedJson && parsedJson.hasOwnProperty('aud')) {
@@ -683,8 +673,6 @@ AuthenticationContext.prototype.saveTokenFromHash = function (requestInfo) {
 
             if (requestInfo.parameters.hasOwnProperty(this.CONSTANTS.ID_TOKEN)) {
                 this._loginInProgress = false;
-				//console.log('-----------------------------------------------------------');
-				//console.log('Function saveTokenFromHash');
                 this._user = this._createUser(requestInfo.parameters[this.CONSTANTS.ID_TOKEN]);
                 if (this._user && this._user.profile) {
                     if (this._user.profile.nonce !== this._getItem(this.CONSTANTS.STORAGE.NONCE_IDTOKEN)) {
@@ -762,8 +750,6 @@ AuthenticationContext.prototype.handleWindowCallback = function () {
             return;
         } else if (requestInfo.requestType === this.REQUEST_TYPE.ID_TOKEN) {
             // JS context may not have the user if callback page was different, so parse idtoken again to callback
-            //console.log('-------------------------------------------------------------');
-			//console.log('Function handleWindowCallback');
 			callback(this._getItem(this.CONSTANTS.STORAGE.ERROR_DESCRIPTION), this._createUser(this._getItem(this.CONSTANTS.STORAGE.IDTOKEN)));
             return;
         }
@@ -786,37 +772,17 @@ AuthenticationContext.prototype._getNavigateUrl = function (responseType, resour
 };
 
 AuthenticationContext.prototype._extractIdToken = function (encodedIdToken) {
-	console.log('============================================================================');
-	console.log('Function _extractIdToken');
-	console.log('encodedIdTokan = '+encodedIdToken + '\n');
+	//console.log('encodedIdTokan = '+encodedIdToken + '\n');
+	
     // id token will be decoded to get the username
     var decodedToken = this._decodeJwt(encodedIdToken);
-	console.log('decodedToken1 = '+decodedToken + '\n');
-	
-	//------------------- Debug Zone -----------------------
-	var decodedToken1 = this._decodeJwt('eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6IkhIQnlLVS0wRHFBcU1aaDZaRlBkMlZXYU90ZyIsImtpZCI6IkhIQnlLVS0wRHFBcU1aaDZaRlBkMlZXYU90ZyJ9.eyJhdWQiOiI1ODI5ZGFlNy04Zjg0LTQ3MGEtYjExYy02Y2YzMjU0NWYwNzQiLCJpc3MiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC8zZTBiNmNiZC00OTU5LTRkMDEtODFiZi1jZTg4M2RkYWJkOTYvIiwiaWF0IjoxNTA3NjAyNzI2LCJuYmYiOjE1MDc2MDI3MjYsImV4cCI6MTUwNzYwNjYyNiwiYWlvIjoiQVNRQTIvOEZBQUFBOWYxNnk5ejVYSGVyaHEyOEdJMDN2UGloMWwwaEpRR3NVNFR3aWwzVXBGbz0iLCJhbXIiOlsicHdkIl0sImZhbWlseV9uYW1lIjoiVG9uZ3Nhd2FuZyIsImdpdmVuX25hbWUiOiJLaXR0aXBvbmciLCJpcGFkZHIiOiIxODAuMTgzLjE4OC4xODciLCJuYW1lIjoiVG9uZ3Nhd2FuZyBLaXR0aXBvbmcgLSBUb2dldGhlciBUSCIsIm5vbmNlIjoiZGVmIiwib2lkIjoiNmYyMTJlODctMGRmYS00MmRkLWE4MmItYzM4N2UzZTQ0ZTk2Iiwic3ViIjoiTnhoaks2ZS1wM1JpbllhTVZxbHlxMVdjRFA3MXMzYmotTGtHSFlvYmMwYyIsInRpZCI6IjNlMGI2Y2JkLTQ5NTktNGQwMS04MWJmLWNlODgzZGRhYmQ5NiIsInVuaXF1ZV9uYW1lIjoiay50b25nc2F3YW5nQHRvZ2V0aGVydGVhbS5jby50aCIsInVwbiI6ImsudG9uZ3Nhd2FuZ0B0b2dldGhlcnRlYW0uY28udGgiLCJ2ZXIiOiIxLjAifQ.hIv9nLABFVA-EeN1kJqmiZcFVKyWB2NZ9PESPCZTLftEFlbbMDYrikXp5latuiE8gSYGB4DG0AIJAEYOCKgjDergMJogiRh8G3ewtfYpsIfJJVzbptXVquLdvpYEdDKN6qlbaEo3bSufy1aukvFdV7wKzGAxhNU8Pzh3_f-fK5Obg1tywWoLLitKkGQbRxWAwgZEhOnchdNZB1A8_0vVwT22CfooO_5JFAib3dTcrgMwPfSklPPetvrQaTzlC20NQq3_PnkTiV4d_yFppY7x-p-0sGESI9ima0kbqx2S4jhW5f1DHgAWS-dSrOoZOsO0ASKWl9Ey2ViRPzw6_glJ4w');
-    console.log('Success DecodeToken1 = '+decodedToken1);
-	//------------------------------------------------------
 	if (!decodedToken) {
         return null;
     }
 
     try {
         var base64IdToken = decodedToken.JWSPayload;
-		//console.log('decodedToken2 = '+base64IdToken+'\n');
-		//---------------------- Debug Zone -------------------------
-		var decodedToken2 = decodedToken1.JWSPayload;
-		//console.log('Success DecodeToken2 = '+decodedToken2);
-		//-----------------------------------------------------------
-		
-		
-		
         var base64Decoded = this._base64DecodeStringUrlSafe(base64IdToken);
-		console.log('decodedToken3 = '+base64Decoded+'\n');
-		//---------------------- Debug Zone -------------------------
-		var decodedToken3 = this._base64DecodeStringUrlSafe(decodedToken2);
-		console.log('Success DecodeToken3 = '+decodedToken3);
-		//-----------------------------------------------------------
         if (!base64Decoded) {
             this._logstatus('The returned id_token could not be base64 url safe decoded.');
             return null;
@@ -832,9 +798,6 @@ AuthenticationContext.prototype._extractIdToken = function (encodedIdToken) {
 };
 
 AuthenticationContext.prototype._extractUserName = function (encodedIdToken) {
-	console.log('------------------------------------------------------');
-	console.log('Function222');
-	console.log('encodedIdTokan = '+encodedIdToken);
     // id token will be decoded to get the username
     try {
         var parsed = this._extractIdToken(encodedIdToken);
@@ -1043,25 +1006,12 @@ AuthenticationContext.prototype._saveItem = function (key, obj) {
     return true;
 };
 
-AuthenticationContext.prototype._getItem = function (key) {
-
-	var testDebug1 = false;
-	if(this.CONSTANTS.STORAGE.IDTOKEN === key){ 
-		//console.log('------------------------------------------------------------------');
-		//console.log('Function _getItem');
-		testDebug1 = true;
-	}
-		
-    //if (this.config && this.config.cacheLocation && this.config.cacheLocation === 'localStorage') {
+AuthenticationContext.prototype._getItem = function (key) {	
 	if (this.config && this.config.cacheLocation && this.config.cacheLocation === 'localStorage') {	
         if (!this._supportsLocalStorage()) {
             this._logstatus('Local storage is not supported');
             return null;
         }
-		if(testDebug1){
-			console.log('key = '+key);
-			console.log('token = '+localStorage.getItem(key));
-		}
         return localStorage.getItem(key);
     }
 
