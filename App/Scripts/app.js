@@ -5,17 +5,16 @@ angular.module('catApp', ['ngRoute','AdalAngular'])
     $routeProvider.when("/Home", {
         controller: "homeCtrl",
         templateUrl: "/App/Views/Home.html",
-    }).when("/CatList", {
-        controller: "catListCtrl",
-        templateUrl: "/App/Views/CatList.html",
-        requireADLogin: true,
-	}).when("/Calc", {
+    }).when("/Calc", {
         controller: "calcCtrl",
         templateUrl: "/App/Views/Calc.html",
 		requireADLogin: true,
     }).when("/UserData", {
         controller: "userDataCtrl",
         templateUrl: "/App/Views/UserData.html",
+    }).when("/Second", {
+        controller: "SecondCDNCtrl",
+        templateUrl: "/App/Views/sub/second.html",
     }).otherwise({ redirectTo: "/Home" });
 
     adalProvider.init(
