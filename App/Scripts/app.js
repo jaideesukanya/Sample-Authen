@@ -15,6 +15,9 @@ angular.module('catApp', ['ngRoute','AdalAngular'])
     }).when("/Second", {
         controller: "SecondCDNCtrl",
         templateUrl: "/App/Views/sub/second.html",
+    }).when("/Proxy", {
+        controller: "proxyCtrl",
+        templateUrl: "/App/Views/proxy.html",
     }).otherwise({ redirectTo: "/Home" });
 
     adalProvider.init(
