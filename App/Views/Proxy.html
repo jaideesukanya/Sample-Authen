@@ -28,11 +28,11 @@
 					//Request headers
 					xhrObj.setRequestHeader ("Authorization", "Bearer " + userToken);
 				},
-				type: "POST",
-				dataType: 'html',
-				data: content,
+				type: "GET",
 				success: function (data, textStatus, jqXHR){
 					console.log('CDNToken = '+data);
+					console.log('CDNToken = '+textStatus);
+					console.log('CDNToken = '+jqXHR);
 				},
 				error: function(xhr, textStatus, errorThrown, response, status, error) { 
 					console.log('getCDNToken Error!!');
