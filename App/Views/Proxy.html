@@ -32,7 +32,7 @@
 				success: function (data, textStatus, jqXHR){
 					console.log('CDNToken = '+data);
 					console.log('CDNToken = '+textStatus);
-					console.log('CDNToken = '+jqXHR);
+					console.log('CDNToken = '+jqXHR.responseText);
 				},
 				error: function(xhr, textStatus, errorThrown, response, status, error) { 
 					console.log('getCDNToken Error!!');
