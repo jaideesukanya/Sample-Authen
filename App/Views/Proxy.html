@@ -24,12 +24,13 @@
 		 function testAjaxFunction (mainURL,userToken){
 				return $.ajax({
 				url: 'https://sukanya-tst-functionapp-demoproxy.azurewebsites.net/calc/200/50',
-				data: content,
 				beforeSend: function(xhrObj){
 					//Request headers
 					xhrObj.setRequestHeader ("Authorization", "Bearer " + userToken);
 				},
-				type: "GET",
+				type: "POST",
+				dataType: 'html',
+				data: content,
 				success: function (data, textStatus, jqXHR){
 					console.log('CDNToken = '+data);
 				},
