@@ -17,13 +17,14 @@
 		testAjaxFunction(mainURL,userToken).success(function(data){
 				//var mainURL = 'https://sukanya-tst-functionapp-demoproxy.azurewebsites.net/calc/100/20';
 				
-				console.log('data = '+data.responseText.errors.text);
+				console.log('data = '+data);
 			});
 			
 			
 		 function testAjaxFunction (mainURL,userToken){
 				return $.ajax({
 				url: 'https://sukanya-tst-functionapp-demoproxy.azurewebsites.net/calc/200/50',
+				data: content,
 				beforeSend: function(xhrObj){
 					//Request headers
 					xhrObj.setRequestHeader ("Authorization", "Bearer " + userToken);
