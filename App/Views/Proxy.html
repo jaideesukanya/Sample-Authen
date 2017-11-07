@@ -17,7 +17,7 @@
 		testAjaxFunction(mainURL,userToken).success(function(data){
 				//var mainURL = 'https://sukanya-tst-functionapp-demoproxy.azurewebsites.net/calc/100/20';
 				
-				console.log('data = '+data);
+				console.log('data = '+data.responseText.errors.text);
 			});
 			
 			
